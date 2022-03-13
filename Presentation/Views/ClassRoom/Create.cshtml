@@ -1,0 +1,37 @@
+﻿@model Models.ClassRoomModel
+@{
+	string Message = ViewBag.Message;
+}
+@if (!string.IsNullOrWhiteSpace(Message))
+{
+	<div class="alert alert-danger">
+		<span> Insert Has an Error! </span>
+		<br/>
+		@Message
+	</div>
+}
+<form action="\ClassRoom\Create" method="post" asp-antiforgery="true">
+	<div class="row col-md-12">
+		<div class="form-group col-md-3">
+			<label class="label">
+				Class Name
+				<input type="text" class="form-control" asp-for="Name" autocomplete="off" placeholder="Please enter name" />
+			</label>
+		</div>
+		<div class="form-group col-md-3">
+			<label class="label">
+				Age Range
+				<input type="number" class="form-control" asp-for="AgeRange" autocomplete="off" />
+			</label>
+		</div>
+		<div class="form-group col-md-3">
+			<label class="label">
+				School
+				<select asp-for="SchoolId" asp-items="@Model.SchoolSelectList" class="form-control"></select>
+			</label>
+		</div>
+		<div class="form-group col-md-3">
+			<button type="submit" class="btn btn-sm btn-primary btn1234" style="margin-top:32px"> Save</button>
+		</div>
+	</div>
+</form>

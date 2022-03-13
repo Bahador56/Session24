@@ -1,0 +1,45 @@
+﻿@model List<Models.SchoolModel>
+@{
+	ViewData["Title"]="School List";
+}
+<div class="row">
+		<a asp-action="Create" class="btn btn-primary btn-md mb-2" >
+			<i class="fas fa-plus"></i>
+			افزودن مدرسه جدید
+		</a>
+	
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Phone Number</th>
+					<th>Create Date</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model)
+				{
+					<tr>
+						<td>@item.Id</td>
+						<td>@item.Name</td>
+						<td>@item.PhoneNumber</td>
+						<td>@item.CreateDate</td>
+						<td>
+							<a href="/school/edit?id=@item.Id" class="btn btn-warning btn-sm" >
+								<i class="fas fa-edit"></i>
+								ویرایش
+							</a>
+							<a asp-controller="School" asp-action="Delete" asp-route-id=@item.Id class="btn btn-danger btn-sm" >
+								<i class="fas fa-trash"></i>
+								حذف
+							</a>
+						</td>
+					</tr>
+				}	
+			</tbody>
+		</table>
+	</div>
+</div>
+

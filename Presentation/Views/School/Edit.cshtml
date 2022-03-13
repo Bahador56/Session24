@@ -1,0 +1,32 @@
+﻿@model SchoolModel
+@{
+	string Message = ViewBag.Message;
+}
+@if (!string.IsNullOrWhiteSpace(Message))
+{
+	<div class="alert alert-danger">
+		<span> Insert Has an Error! </span>
+		<br/>
+		@Message
+	</div>
+}
+<form action="\School\Edit" method="post" asp-antiforgery="true">
+	<input type="hidden" name="@nameof(Model.Id)" value="@Model.Id" />
+	<div class="row col-md-12">
+		<div class="form-group col-md-3">
+			<label class="label">
+				School Name
+				<input type="text" class="form-control" name="@nameof(Model.Name)" value="@Model.Name" autocomplete="off" placeholder="Please enter name" />
+			</label>
+		</div>
+		<div class="form-group col-md-3">
+			<label class="label">
+				Phone Number
+				<input type="tel" class="form-control" name="@nameof(Model.PhoneNumber)" value="@Model.PhoneNumber" autocomplete="off" placeholder="+98..." />
+			</label>
+		</div>
+		<div class="form-group col-md-3">
+			<button type="submit" class="btn btn-sm btn-warning" style="margin-top:32px"> Edit</button>
+		</div>
+	</div>
+</form>
